@@ -3,15 +3,16 @@ type TaskCardProps = {
   title: string;
   description: string;
   assignee: string;
+  category: "Frontend" |"Design" |"Testing" |"API";
 };
 
-const TaskCard = ({ id, title, description, assignee }: TaskCardProps) => {
+const TaskCard = ({ id, title, description, assignee, category }: TaskCardProps) => {
   if (id === undefined) {
     return (
       <article>
         <h3>Task: Build Task Board</h3>
         <p>
-          <strong>Category:</strong>Developing
+          <strong>Category:</strong>{category}
         </p>
 
         <p>
@@ -38,7 +39,7 @@ const TaskCard = ({ id, title, description, assignee }: TaskCardProps) => {
       <h3>Task: Build Task Board {id}</h3>
      
       <p>
-        <strong>Category:</strong>Developing
+        <strong>Category:</strong>{category}
       </p>
 
       <p>

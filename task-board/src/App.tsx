@@ -14,6 +14,7 @@ const App = () => {
             title="Implement the first task card"
             description="Description: a short description about the first task card."
             assignee="L.W."
+            category="Frontend"
           />
         </section>
 
@@ -23,6 +24,7 @@ const App = () => {
             title="Implement the second task card"
             description="Description: a short description about the second task card."
             assignee="L.W."
+            category="Design"
           />
         </section>
 
@@ -32,6 +34,7 @@ const App = () => {
             title="Implement the third task card"
             description="Description: short description about the third task card."
             assignee="L.W."
+            category="Testing"
           />
         </section>
       </main>
