@@ -13,17 +13,19 @@ const TaskCard = ({ id, title, description, assignee }: TaskCardProps) => {
         <p>
           <strong>Category:</strong>Developing
         </p>
+
         <p>
-          <strong>Title:</strong>
-          {title}
+          <strong>Title:</strong>{title}
         </p>
+
         <p>
           <strong>Description:</strong> {description}
         </p>
+
         <p>
-          <strong>Respoinsible:</strong>
-          {assignee}
+          <strong>Respoinsible:</strong> {assignee}
         </p>
+
         <p>
           <strong>Priority:</strong>High
         </p>
@@ -33,25 +35,24 @@ const TaskCard = ({ id, title, description, assignee }: TaskCardProps) => {
 
   return (
     <article>
-      <h3>Task: Build Task Board</h3>
-      <p>
-        <strong>ID:</strong>
-        {id}
-      </p>
+      <h3>Task: Build Task Board {id}</h3>
+     
       <p>
         <strong>Category:</strong>Developing
       </p>
+
       <p>
-        <strong>Title:</strong>
-        {title}
+        <strong>Title:</strong>{title}
       </p>
+
       <p>
         <strong>Description:</strong> {description}
       </p>
+
       <p>
-        <strong>Responsible:</strong>
-        {assignee}
+        <strong>Responsible:</strong>{assignee}
       </p>
+
       <p>
         <strong>Priority:</strong>High
       </p>

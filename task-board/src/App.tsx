@@ -2,24 +2,42 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TaskCard from "./components/TaskCard";
 
-const App= ()=>{
+const App = () => {
+  return (
+    <>
+      <Header title="React" courseName="Java Developing Course"></Header>
 
-    return (
-    
-        <>
-        <Header title="React" courseName="Java Developing Course"></Header>
+      <main>
+        <section>
+          <TaskCard
+            id={1}
+            title="Implement the first task card"
+            description="Description: a short description about the first task card."
+            assignee="L.W."
+          />
+        </section>
 
-        <main>
-            <section>
-                <TaskCard 
-                title="Implement the first task card"
-                description="Create a simple component with hard code information"
-                assignee="L.W."/>
-            </section>
-        </main>
+        <section>
+          <TaskCard
+            id={2}
+            title="Implement the second task card"
+            description="Description: a short description about the second task card."
+            assignee="L.W."
+          />
+        </section>
 
-        <Footer creator="L.W." year={2026} />  
-        </>
-    );
+        <section>
+          <TaskCard
+            id={3}
+            title="Implement the third task card"
+            description="Description: short description about the third task card."
+            assignee="L.W."
+          />
+        </section>
+      </main>
+
+      <Footer creator="L.W." year={2026} />
+    </>
+  );
 };
 export default App;
