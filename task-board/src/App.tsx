@@ -15,6 +15,7 @@ const App = () => {
             description="Description: a short description about the first task card."
             assignee="L.W."
             category="Frontend"
+            priority="High"
           />
         </section>
 
@@ -25,6 +26,7 @@ const App = () => {
             description="Description: a short description about the second task card."
             assignee="L.W."
             category="Design"
+            priority="Medium"
           />
         </section>
 
@@ -35,6 +37,7 @@ const App = () => {
             description="Description: short description about the third task card."
             assignee="L.W."
             category="Testing"
+            priority="Low"
           />
         </section>
       </main>

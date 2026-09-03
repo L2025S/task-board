@@ -4,9 +4,10 @@ type TaskCardProps = {
   description: string;
   assignee: string;
   category: "Frontend" |"Design" |"Testing" |"API";
+  priority:"Low"|"Medium"|"High";
 };
 
-const TaskCard = ({ id, title, description, assignee, category }: TaskCardProps) => {
+const TaskCard = ({ id, title, description, assignee, category,priority }: TaskCardProps) => {
   if (id === undefined) {
     return (
       <article>
@@ -28,7 +29,7 @@ const TaskCard = ({ id, title, description, assignee, category }: TaskCardProps)
         </p>
 
         <p>
-          <strong>Priority:</strong>High
+          <strong>Priority:</strong>{priority}
         </p>
       </article>
     );
@@ -55,7 +56,7 @@ const TaskCard = ({ id, title, description, assignee, category }: TaskCardProps)
       </p>
 
       <p>
-        <strong>Priority:</strong>High
+        <strong>Priority:</strong>{priority}
       </p>
     </article>
   );
