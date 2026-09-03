@@ -13,7 +13,8 @@ const App= ()=>{
             <section>
                 <TaskCard 
                 title="Implement the first task card"
-                description="Create a simple component with hard code information"/>
+                description="Create a simple component with hard code information"
+                assignee="L.W."/>
             </section>
         </main>
 
