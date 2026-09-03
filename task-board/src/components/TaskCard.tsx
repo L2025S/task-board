@@ -2,34 +2,35 @@
 type TaskCardProps = {
     id?: number;
     title: string;
+    description: string;
 }
 
-const TaskCard =({id,title}:TaskCardProps)=>{
+const TaskCard =({id,title, description}:TaskCardProps)=>{
 
     if (id === undefined){
 
     return (
         
         <article>
-            <h3>Task: Bygga Task Board</h3>
-            <p><strong>Kategori:</strong>Utveckling</p>
-            <p><strong>Titel:</strong>{title}</p>
-            <p><strong>Beskrivning:</strong> Create a simple component with hard code infomration.</p>
-            <p><strong>Ansvarig:</strong>L.W.</p>
-            <p><strong>Prioritet:</strong>Hög</p>
+            <h3>Task: Build Task Board</h3>
+            <p><strong>Category:</strong>Developing</p>
+            <p><strong>Title:</strong>{title}</p>
+            <p><strong>Description:</strong> {description}</p>
+            <p><strong>Respoinsible:</strong>L.W.</p>
+            <p><strong>Priority:</strong>High</p>
         </article>
         );
     };
 
     return(
         <article>
-            <h3>Task: Bygga Task Board</h3>
+            <h3>Task: Build Task Board</h3>
             <p><strong>ID:</strong>{id}</p>
-            <p><strong>Category:</strong>Utveckling</p>
+            <p><strong>Category:</strong>Developing</p>
             <p><strong>Title:</strong>{title}</p>
-            <p><strong>Description:</strong> Create a simple component with hard code infomration.</p>
-            <p><strong>Ansvarig:</strong>L.W.</p>
-            <p><strong>Prioritet:</strong>Hög</p>
+            <p><strong>Description:</strong> {description}</p>
+            <p><strong>Responsible:</strong>L.W.</p>
+            <p><strong>Priority:</strong>High</p>
         </article>
     );
 };
