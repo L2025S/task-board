@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TaskCard from "./components/TaskCard";
 import Column from "./components/Column";
+import "./App.css"
 
 const App = () => {
   return (

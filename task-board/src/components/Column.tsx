@@ -7,7 +7,7 @@ type ColumnProps = {
 const Column = ({title, children}:ColumnProps) =>{
 
     return(
-        <section className="column">
+        <section className="columns">
             <h2 className="column-title">{title}</h2>
             {children}
         </section>
