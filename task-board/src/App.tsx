@@ -5,10 +5,11 @@ import Column from "./components/Column";
 
 const App = () => {
   return (
-    <>
+     <div className="app">
       <Header title="React" courseName="Java Developing Course"></Header>
 
-      <main>
+      <main className="app-main">
+        <div className="columns">
         <Column title="Todo">
             <section>  
              <TaskCard
@@ -49,12 +50,12 @@ const App = () => {
                 />
             </section>
         </Column>
-
+      </div>
        
       </main>
 
       <Footer creator="L.W." year={2026} />
-    </>
-  );
+    </div>
+    );
 };
 export default App;

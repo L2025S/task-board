@@ -10,7 +10,7 @@ const Header =({courseName, title, description}:HeaderProps)=>{
     if (description===undefined){
          return (
         
-        <header>
+        <header className="app-header">
             <h2>{title}</h2>
             <p>{courseName}</p>
         

@@ -7,8 +7,8 @@ type ColumnProps = {
 const Column = ({title, children}:ColumnProps) =>{
 
     return(
-        <section>
-            <h2>{title}</h2>
+        <section className="column">
+            <h2 className="column-title">{title}</h2>
             {children}
         </section>
     );

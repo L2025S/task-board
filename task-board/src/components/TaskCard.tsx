@@ -10,25 +10,25 @@ type TaskCardProps = {
 const TaskCard = ({ id, title, description, assignee, category,priority }: TaskCardProps) => {
   if (id === undefined) {
     return (
-      <article>
-        <h3>Task: Build Task Board</h3>
-        <p>
+      <article className="task-card">
+        <h3 className="task-title">Task: Build Task Board</h3>
+        <p className="task-category">
           <strong>Category:</strong>{category}
         </p>
 
-        <p>
+        <p className="task-title">
           <strong>Title:</strong>{title}
         </p>
 
-        <p>
+        <p className="task-description">
           <strong>Description:</strong> {description}
         </p>
 
-        <p>
+        <p className="task-responsible">
           <strong>Respoinsible:</strong> {assignee}
         </p>
 
-        <p>
+        <p className="task-priority">
           <strong>Priority:</strong>{priority}
         </p>
       </article>
@@ -36,26 +36,26 @@ const TaskCard = ({ id, title, description, assignee, category,priority }: TaskC
   }
 
   return (
-    <article>
-      <h3>Task: Build Task Board {id}</h3>
+    <article className="task-card">
+      <h3 className="task-title">Task: Build Task Board {id}</h3>
      
-      <p>
+      <p className="task-category">
         <strong>Category:</strong>{category}
       </p>
 
-      <p>
+      <p className="task-title">
         <strong>Title:</strong>{title}
       </p>
 
-      <p>
+      <p className="task-description">
         <strong>Description:</strong> {description}
       </p>
 
-      <p>
+      <p className="task-responsible">
         <strong>Responsible:</strong>{assignee}
       </p>
 
-      <p>
+      <p className="task-priority">
         <strong>Priority:</strong>{priority}
       </p>
     </article>
