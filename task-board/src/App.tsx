@@ -7,7 +7,7 @@ import "./App.css"
 const App = () => {
   return (
      <div className="app">
-      <Header title="React" courseName="Java Developing Course"></Header>
+      <Header title="React" courseName="Course: Front-end development - React"></Header>
 
       <main className="app-main">
         <div className="columns">
