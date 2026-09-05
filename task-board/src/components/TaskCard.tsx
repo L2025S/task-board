@@ -7,6 +7,8 @@ type TaskCardProps = {
   priority:"Low"|"Medium"|"High";
 };
 
+export type { TaskCardProps };
+
 const TaskCard = ({ id, title, description, assignee, category,priority }: TaskCardProps) => {
   if (id === undefined) {
     return (
