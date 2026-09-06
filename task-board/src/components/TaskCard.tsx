@@ -3,8 +3,8 @@ type TaskCardProps = {
   title: string;
   description: string;
   assignee: string;
-  category: "Frontend" |"Design" |"Testing" |"API";
-  priority:"Low"|"Medium"|"High";
+  category: "Frontend" | "Design" | "Testing" | "API";
+  priority: "Low" | "Medium" | "High" ;
 };
 
 export type { TaskCardProps };
@@ -13,7 +13,7 @@ const TaskCard = ({ id, title, description, assignee, category,priority }: TaskC
   if (id === undefined) {
     return (
       <article className="task-card">
-        <h3 className="task-title">Task: Build Task Board</h3>
+        <h3 className="task-title"></h3>
         <p className="task-category">
           <strong>Category:</strong>{category}
         </p>
@@ -39,7 +39,7 @@ const TaskCard = ({ id, title, description, assignee, category,priority }: TaskC
 
   return (
     <article className="task-card">
-      <h3 className="task-title">Task: Build Task Board {id}</h3>
+      <h3 className="task-title">{id}</h3>
      
       <p className="task-category">
         <strong>Category:</strong>{category}
