@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import TaskCard from "../components/TaskCard";
-import type { TaskCardProps } from "../components/TaskCard";
+import type { TaskCardProps } from "../types/Task";
 
 describe("TaskCard Component", () => {
   it("renders TaskCard with all properties", () => {
