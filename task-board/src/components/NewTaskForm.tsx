@@ -111,17 +111,24 @@ return(
     </select>
     </div>
 
-
-    <label htmlFor="status" className="task-status">Status</label>
+    {/* Status */}
+    <div>
+    <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">
+    Status
+    </label>
     <select
     id="status"
     name="status"
     value={status}
-    onChange={(event)=> setStatus(event.target.value as TaskStatus)}>
+    onChange={(event)=> setStatus(event.target.value as TaskStatus)}
+    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f9dcc4] focus:border-transparent outline-none transition bg-white">
         <option value="Todo">Todo</option>
         <option value="Doing">Doing</option>
         <option value="Done">Done</option>
     </select>
+    </div>
+
+
 
     <button type="submit" className="task-submit">Create Task</button>
 
