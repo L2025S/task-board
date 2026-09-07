@@ -45,6 +45,7 @@ return(
 
 
     {/* Description */}
+    <div>
     <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
     Description
     </label>
@@ -57,14 +58,22 @@ return(
     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f9dcc4] focus:border-transparent outline-none transition"
     placeholder="Enter task description"
     />
+    </div>
 
 
-    <label htmlFor="assignee" className="task-responsible">Assignee</label>
+    {/* Assignee  */}
+    <div>
+    <label htmlFor="assignee" className="block text-sm font-medium text-gray-700 mb-1">
+    Assignee
+    </label>
     <input 
     id="assignee"
     name="assignee"
     value={assignee}
-    onChange={(event)=> setAssignee(event.target.value)} />
+    onChange={(event)=> setAssignee(event.target.value)} 
+    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f9dcc4] focus:border-transparent outline-none transition"
+    placeholder="Enter assignee name"/>
+    </div>
 
 
     <label htmlFor="category" className="task-category">Category</label>
