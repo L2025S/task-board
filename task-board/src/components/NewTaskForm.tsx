@@ -19,21 +19,38 @@ const handleSubmit = ( event: React.SubmitEvent<HTMLFormElement>) =>{
 }
 
 return(
+    <div>
+    <h2>New Task</h2>
     <form onSubmit={handleSubmit}>
+
+
+    <label htmlFor="title">Title</label>
     <input 
+    id="title"
+    name="title"
     value={title}
     onChange={(event) => setTitle(event.target.value)} />
 
+    <label htmlFor="description">Description</label>
     <textarea
+    id="description"
+    name="description"
     value={description} 
     onChange={(event) =>setDescription(event.target.value)}/>
 
 
+    <label htmlFor="assignee">Assignee</label>
     <input 
+    id="assignee"
+    name="assignee"
     value={assignee}
     onChange={(event)=> setAssignee(event.target.value)} />
 
+
+    <label htmlFor="category">Category</label>
     <select
+    id="category"
+    name="category"
     value={category}
     onChange={(event) => setCategory(event.target.value as Category)}> 
     <option value="Frontend">Frontend</option>
@@ -43,7 +60,10 @@ return(
     <option value="API">API</option>
     </select>;
 
+    <label htmlFor="priority">Priority</label>
     <select
+    id="priority"
+    name="priority"
     value={priority}
     onChange={(event) => setPriority(event.target.value as Priority)}>
         <option value="High">High</option>
@@ -53,7 +73,10 @@ return(
 
 
 
+    <label htmlFor="status">Status</label>
     <select
+    id="status"
+    name="status"
     value={status}
     onChange={(event)=> setStatus(event.target.value as TaskStatus)}>
         <option value="Todo">Todo</option>
@@ -64,6 +87,7 @@ return(
     <button type="submit">Create Task</button>
 
     </form>
+    </div>
 );
 
 

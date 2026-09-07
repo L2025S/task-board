@@ -1,9 +1,9 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TaskCard from "./components/TaskCard";
-
 import type { Task } from "./types/Task";
 import "./App.css";
+import NewTaskForm from "./components/NewTaskForm";
 
 const tasks: Task[] = [
   {
@@ -158,6 +158,7 @@ const App = () => {
 
 
         </div>
+        <NewTaskForm />
       </main>
 
       <Footer creator="L.W." year={2026} />
