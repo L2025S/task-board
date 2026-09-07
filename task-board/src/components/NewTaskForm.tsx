@@ -12,8 +12,12 @@ const [category, setCategory] =useState<Category>("Frontend");
 const [priority, setPriority] =useState<Priority>("Medium");
 const [status, setStatus] =useState<TaskStatus>("Todo");
 
+const handleSubmit = ( event: React.SubmitEvent<HTMLFormElement>) =>{
+    event.preventDefault();
+}
+
 return(
-    <>
+    <form onSubmit={handleSubmit}>
     <input 
     value={title}
     onChange={(event) => setTitle(event.target.value)} />;
@@ -55,7 +59,9 @@ return(
         <option value="Done">Done</option>
     </select>;
 
-    </>
+    <button type="submit">Create Task</button>
+
+    </form>
 );
 
 
