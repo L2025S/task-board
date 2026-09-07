@@ -25,17 +25,29 @@ const handleSubmit = ( event: React.SubmitEvent<HTMLFormElement>) =>{
 }
 
 return(
-    <div className="task-card">
-    <h2>New Task</h2>
-    <form onSubmit={handleSubmit}>
+    <div className="bg-white rounded-lg p-6 shadow-lg border border-[#fcd5ce]">
+    <h2 className="text-2xl font-bold text-black mb-6">New Task</h2>
+    <form onSubmit={handleSubmit} className="space-y-4">
 
-
-    <label htmlFor="title" className="task-title">Title</label>
+    {/* Title */}
+    <div>
+    <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
+        Title
+    </label>
     <input 
     id="title"
     name="title"
     value={title}
-    onChange={(event) => setTitle(event.target.value)} />
+    onChange={(event) => setTitle(event.target.value)} 
+    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f9dcc4] focus:border-transparent outline-none transition"
+    placeholder="Enter task title"/>
+    </div>
+
+
+
+
+
+
 
     <label htmlFor="description" className="task-description">Description</label>
     <textarea
