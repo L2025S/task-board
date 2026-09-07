@@ -15,7 +15,13 @@ const [status, setStatus] =useState<TaskStatus>("Todo");
 const handleSubmit = ( event: React.SubmitEvent<HTMLFormElement>) =>{
     event.preventDefault();
 
-    console.log("Submit the formula.")
+    console.log("Submit the formula.");
+    console.log("Title: ", title);
+    console.log("Description: ", description);
+    console.log("Assignee: ", assignee);
+    console.log("Category: ", category);
+    console.log("Priority: ", priority);
+    console.log("Status: ", status);
 }
 
 return(
