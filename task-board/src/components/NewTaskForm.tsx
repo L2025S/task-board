@@ -75,19 +75,24 @@ return(
     placeholder="Enter assignee name"/>
     </div>
 
-
+    {/* Category */}
+    <div>
     <label htmlFor="category" className="task-category">Category</label>
     <select
     id="category"
     name="category"
     value={category}
-    onChange={(event) => setCategory(event.target.value as Category)}> 
+    onChange={(event) => setCategory(event.target.value as Category)}
+    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f9dcc4] focus:border-transparent outline-none transition bg-white"> 
     <option value="Frontend">Frontend</option>
     <option value="Backend">Backend</option>
     <option value="Test">Test</option>
     <option value="Design">Design</option>
     <option value="API">API</option>
     </select>
+    </div>
+
+
 
     <label htmlFor="priority" className="task-priority">Priority</label>
     <select
