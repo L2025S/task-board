@@ -129,8 +129,10 @@ return(
     </div>
 
 
-
-    <button type="submit" className="task-submit">Create Task</button>
+    {/* Submit Button */}
+    <button type="submit" className="w-full bg-[#f9dcc4] hover:bg-[#f5cfb3] text-black font-semibold py-3 px-6 rounded-lg transition-colors shadow-sm hover:shadow-md active:scale-[0.98]">
+    Create Task
+    </button>
 
     </form>
     </div>
