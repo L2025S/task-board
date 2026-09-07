@@ -14,22 +14,24 @@ const [status, setStatus] =useState<TaskStatus>("Todo");
 
 const handleSubmit = ( event: React.SubmitEvent<HTMLFormElement>) =>{
     event.preventDefault();
+
+    console.log("Submit the formula.")
 }
 
 return(
     <form onSubmit={handleSubmit}>
     <input 
     value={title}
-    onChange={(event) => setTitle(event.target.value)} />;
+    onChange={(event) => setTitle(event.target.value)} />
 
     <textarea
     value={description} 
-    onChange={(event) =>setDescription(event.target.value)}/>;
+    onChange={(event) =>setDescription(event.target.value)}/>
 
 
     <input 
     value={assignee}
-    onChange={(event)=> setAssignee(event.target.value)} />;
+    onChange={(event)=> setAssignee(event.target.value)} />
 
     <select
     value={category}
@@ -47,7 +49,7 @@ return(
         <option value="High">High</option>
         <option value="Medium">Medium</option>
         <option value="Low">Low</option>
-    </select>;
+    </select>
 
 
 
@@ -57,7 +59,7 @@ return(
         <option value="Todo">Todo</option>
         <option value="Doing">Doing</option>
         <option value="Done">Done</option>
-    </select>;
+    </select>
 
     <button type="submit">Create Task</button>
 
