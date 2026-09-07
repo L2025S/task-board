@@ -155,10 +155,11 @@ const App = () => {
             ))}
           </div>
 
-
+        <NewTaskForm />
 
         </div>
-        <NewTaskForm />
+
+       
       </main>
 
       <Footer creator="L.W." year={2026} />

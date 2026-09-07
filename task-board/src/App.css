@@ -68,13 +68,15 @@
 }
 
 
-/* =============== Category & Priority ================== */
+/* =============== Category， Priority, Description, Resonsible================== */
 .task-category {
-    font-size: 0.85rem;
-    color:black;
+  display:block;
+  font-size: 0.85rem;
+  color:black;
 }
 
 .task-priority{
+    display: block;
     font-size:0.85rem;
     color:#c62828;
     font-weight:600;
@@ -89,3 +91,17 @@
     font-size: 0.85rem;
     color:black;
 }
+
+.task-status{
+  display:block;
+  font-size: 0.85rem;
+  color:black;
+}
+
+.task-submit{
+  display:block;
+  margin-top:1rem;
+  font-size: 0.85rem;
+  color:black;
+}
+

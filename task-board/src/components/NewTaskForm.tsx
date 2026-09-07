@@ -19,19 +19,19 @@ const handleSubmit = ( event: React.SubmitEvent<HTMLFormElement>) =>{
 }
 
 return(
-    <div>
+    <div className="task-card">
     <h2>New Task</h2>
     <form onSubmit={handleSubmit}>
 
 
-    <label htmlFor="title">Title</label>
+    <label htmlFor="title" className="task-title">Title</label>
     <input 
     id="title"
     name="title"
     value={title}
     onChange={(event) => setTitle(event.target.value)} />
 
-    <label htmlFor="description">Description</label>
+    <label htmlFor="description" className="task-description">Description</label>
     <textarea
     id="description"
     name="description"
@@ -39,7 +39,7 @@ return(
     onChange={(event) =>setDescription(event.target.value)}/>
 
 
-    <label htmlFor="assignee">Assignee</label>
+    <label htmlFor="assignee" className="task-responsible">Assignee</label>
     <input 
     id="assignee"
     name="assignee"
@@ -47,7 +47,7 @@ return(
     onChange={(event)=> setAssignee(event.target.value)} />
 
 
-    <label htmlFor="category">Category</label>
+    <label htmlFor="category" className="task-category">Category</label>
     <select
     id="category"
     name="category"
@@ -58,9 +58,9 @@ return(
     <option value="Test">Test</option>
     <option value="Design">Design</option>
     <option value="API">API</option>
-    </select>;
+    </select>
 
-    <label htmlFor="priority">Priority</label>
+    <label htmlFor="priority" className="task-priority">Priority</label>
     <select
     id="priority"
     name="priority"
@@ -73,7 +73,7 @@ return(
 
 
 
-    <label htmlFor="status">Status</label>
+    <label htmlFor="status" className="task-status">Status</label>
     <select
     id="status"
     name="status"
@@ -84,7 +84,7 @@ return(
         <option value="Done">Done</option>
     </select>
 
-    <button type="submit">Create Task</button>
+    <button type="submit" className="task-submit">Create Task</button>
 
     </form>
     </div>
