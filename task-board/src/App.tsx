@@ -2,7 +2,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TaskCard from "./components/TaskCard";
 import type { Task } from "./types/Task";
-import "./App.css";
 import NewTaskForm from "./components/NewTaskForm";
 
 const tasks: Task[] = [
@@ -98,18 +97,19 @@ const App = () => {
   const doneTasks = tasks.filter((task) => task.status === "Done");
 
   return (
-    <div className="app">
+    <div className="min-h-screen bg-[#f8edeb] font-sans">
       <Header
         title="Fullstack Programming"
         courseName=" Course: Java Developing "
       ></Header>
 
-      <main className="app-main">
-        <div className="columns">
+      <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           {/* TODO COLUMN */}
-          <div>
-            <h2>Todo</h2>
+          <div className="bg-[#fec89a] rounded-lg p-4 shadow-md min-h-[200px]">
+            <h2 className="text-xl font-bold text-black mb-3">Todo</h2>
+              <div className="space-y-3">
             {todoTasks.map((task) => (
               <TaskCard
                 key={task.id}
@@ -120,12 +120,14 @@ const App = () => {
                 priority={task.priority}
               />
             ))}
+              </div>
           </div>
 
           {/*DOING COLUMN */}
-          <div>
-            <h2>Todo</h2>
-            {doingTasks.map((task) =>(
+          <div className="bg-[#fec89a] rounded-lg p-4 shadow-md min-h-[200px]">
+            <h2 className="text-xl font-bold text-black mb-3">Todo</h2>
+              <div className="space-y-3">
+              {doingTasks.map((task) =>(
               <TaskCard
               key={task.id}
               title={task.title}
@@ -136,26 +138,30 @@ const App = () => {
             
               />
             ))}
-
+              </div>
           </div>
 
 
 
           {/* DONE COLUMN */}
-          <div>
-            <h2>Done</h2>
-            {doneTasks.map((task)=>(
-              <TaskCard 
-              key={task.id}
-              title={task.title}
-              description={task.description}
-              assignee={task.assignee}
-              category={task.category}
-              priority={task.priority}/>
-            ))}
+          <div className="bg-[#fec89a] rounded-lg p-4 shadow-md min-h-[200px]">
+            <h2 className="text-xl font-bold text-black mb-3">Done</h2>
+                <div className="space-y-3">
+                {doneTasks.map((task)=>(
+                <TaskCard 
+                key={task.id}
+                title={task.title}
+                description={task.description}
+                assignee={task.assignee}
+                category={task.category}
+                priority={task.priority}/>
+              ))}
+              </div>
           </div>
 
-        <NewTaskForm />
+              <div className="mt-8 max-w-2xl mx-auto">
+                <NewTaskForm />
+              </div>
 
         </div>
 
