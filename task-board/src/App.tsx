@@ -1,10 +1,12 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TaskCard from "./components/TaskCard";
-import type { Task } from "./types/Task";
+import type { Task, NewTask } from "./types/Task";
 import NewTaskForm from "./components/NewTaskForm";
+import { useState } from "react";
 
-const tasks: Task[] = [
+
+const initialTasks: Task[] = [
   {
     id: 1,
     title: "Implement Authentication",
@@ -91,6 +93,28 @@ const tasks: Task[] = [
 ];
 
 const App = () => {
+
+  // Use useState to manage tasks
+  const [tasks, setTasks]=useState<Task[]>(initialTasks);
+
+  const handleAddTask = (newTask: NewTask )=> {
+    // generate new Id 
+    const maxId = tasks.reduce((max, task) =>(task.id && task.id > max? task.id: max), 0);
+    
+    const newTaskWithId: Task = {
+      ...newTask,
+      id: maxId +1,
+      status:"Todo",
+    };
+
+    setTasks([...tasks, newTaskWithId]);
+
+    console.log("Updated tasks:",[...tasks, newTaskWithId]);
+  }
+
+  
+
+
   // Filter Todo
   const todoTasks = tasks.filter((task) => task.status === "Todo");
   const doingTasks = tasks.filter((task) => task.status === "Doing");
@@ -160,7 +184,7 @@ const App = () => {
           </div>
 
               <div className="mt-8 max-w-2xl mx-auto">
-                <NewTaskForm />
+                <NewTaskForm onAddTask={handleAddTask}/>
               </div>
 
         </div>
