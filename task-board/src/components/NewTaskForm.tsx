@@ -10,7 +10,7 @@ const [description, setDescription] =useState("");
 const [assignee, setAssignee] = useState("");
 const [category, setCategory] =useState<Category>("Frontend");
 const [priority, setPriority] =useState<Priority>("Medium");
-const [status, setStatus] =useState<TaskStatus>("Todo");
+//const [status, setStatus] =useState<TaskStatus>("Todo");
 
 const handleSubmit = ( event: React.SubmitEvent<HTMLFormElement>) =>{
     event.preventDefault();
@@ -111,7 +111,7 @@ return(
     </select>
     </div>
 
-    {/* Status */}
+    {/* Status
     <div>
     <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">
     Status
@@ -126,7 +126,7 @@ return(
         <option value="Doing">Doing</option>
         <option value="Done">Done</option>
     </select>
-    </div>
+    </div> */}
 
 
     {/* Submit Button */}

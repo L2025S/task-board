@@ -15,3 +15,11 @@ export type Task = {
 
 export type TaskCardProps = Pick< Task, "id"|"title" | "description" |"assignee" | "category" | "priority">;
 
+
+export type NewTask = Omit<Task, "id" | "status" >;
+
+export type TaskBoardProps = {
+    tasks: Task[]; // Attribute: type. [] is array here.
+    onAddTask: (newTask: NewTask) => void; // function type. newTask is parameter, NewTask is type. 
+};
+
