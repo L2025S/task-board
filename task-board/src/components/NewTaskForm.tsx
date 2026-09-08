@@ -1,8 +1,17 @@
 import { useState } from "react";
-import type {Category, Priority, TaskStatus } from "../types/Task";
+import type {Category, NewTask, Priority} from "../types/Task";
+
+type NewTaskFormProps = {
+    onAddTask: (newTask: NewTask) =>void;
+};
 
 
-const NewTaskForm = ()=>{
+
+
+
+
+
+const NewTaskForm = ({onAddTask }: NewTaskFormProps)=>{
 
 
 const [title, setTitle] = useState("");
@@ -15,14 +24,29 @@ const [priority, setPriority] =useState<Priority>("Medium");
 const handleSubmit = ( event: React.SubmitEvent<HTMLFormElement>) =>{
     event.preventDefault();
 
-    console.log("Submit the formula.");
-    console.log("Title: ", title);
-    console.log("Description: ", description);
-    console.log("Assignee: ", assignee);
-    console.log("Category: ", category);
-    console.log("Priority: ", priority);
-    console.log("Status: ", status);
-}
+    // ==== create a new task ====
+   const newTask: NewTask = {
+    title,
+    description,
+    assignee,
+    category,
+    priority
+   };
+
+   // Call the function 
+   onAddTask(newTask);
+
+   
+   // Clear up the form
+   setTitle("");
+   setDescription("");
+   setAssignee("");
+   setCategory("Frontend");
+   setPriority("Medium");
+
+   console.log("✅ New task created: ", newTask);
+
+};
 
 return(
     <div className="bg-white rounded-lg p-6 shadow-lg border border-[#fcd5ce]">
