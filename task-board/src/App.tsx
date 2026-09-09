@@ -15,6 +15,8 @@ const App = () => {
   const  [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null> (null);
 
+  const[searchTerm, setSearchTerm]=useState("");
+
  // =======================  Load data from backend ===================
 
  const fetchTasks = async () =>{
@@ -71,28 +73,36 @@ const App = () => {
       }
  };
  
-  //const handleAddTask = (newTask: NewTask )=> {
-    // generate new Id 
-   // const maxId = tasks.reduce((max, task) =>(task.id && task.id > max? task.id: max), 0);
-    
-   // const newTaskWithId: Task = {
-    //  ...newTask,
-   //   id: maxId +1,
-   //   status:"Todo",
-   // };
-
-   // setTasks([...tasks, newTaskWithId]);
-
-   // console.log("Updated tasks:",[...tasks, newTaskWithId]);
-  //}
-
   
 
+  // ========================== search function =========================================
+
+  const filterTasks = (task : Task) =>{
+
+    // If the search field is empty, show all the tasks.
+    if(searchTerm.trim()===""){
+      return true;
+    }
+
+    const searchLower = searchTerm.toLowerCase().trim();
+
+    return(
+      task.title.toLowerCase().includes(searchLower) ||
+      task.description.toLowerCase().includes(searchLower)||
+      task.category.toLowerCase().includes(searchLower)||
+      task.assignee.toLowerCase().includes(searchLower)||
+      task.priority.toLowerCase().includes(searchLower)
+    );
+
+  };
+
+  // Filtered Tasks
+  const filteredTasks = tasks.filter(filterTasks);
 
   // Filter tasks
-  const todoTasks = tasks.filter((task) => task.status === "Todo");
-  const doingTasks = tasks.filter((task) => task.status === "Doing");
-  const doneTasks = tasks.filter((task) => task.status === "Done");
+  const todoTasks = filteredTasks.filter((task) => task.status === "Todo");
+  const doingTasks = filteredTasks.filter((task) => task.status === "Doing");
+  const doneTasks = filteredTasks.filter((task) => task.status === "Done");
 
   // Loading
   
@@ -133,6 +143,47 @@ const App = () => {
       ></Header>
 
       <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+
+      {/* Search Column */}
+      <div className="mb-6">
+          <div className="max-w-xl mx-auto">
+              <div className="relative">
+                <input 
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="search task"
+                className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f9dcc4] focus:border-transparent outline-none transition bg-white shadow-sm"
+                 />
+                 {/* search icon */}
+                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                      🔍
+                 </span>
+                 {/* Clear  */}
+                 {searchTerm &&(
+                  <button
+                  onClick={()=> setSearchTerm("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  >
+                    ✕
+                  </button>
+                 )}
+              </div>
+              {/* Show search quantity */}
+              {searchTerm &&(
+                <p className="text-sm text-gray-500 mt-2 text-center">
+                  found {filteredTasks.length} matching tasks
+                </p>
+              )}
+          </div>
+      </div>
+
+
+
+
+
+
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           {/* TODO COLUMN */}
@@ -149,8 +200,21 @@ const App = () => {
                 priority={task.priority}
               />
             ))}
+
+             {/* If no matching task, show alter */}
+        {todoTasks.length === 0 && (
+          <p className="text-gray-500 text-sm text-center py-4">
+            No matching task.
+          </p>
+        )}
+
               </div>
           </div>
+
+
+       
+
+
 
           {/*DOING COLUMN */}
           <div className="bg-[#fec89a] rounded-lg p-4 shadow-md min-h-[200px]">
@@ -167,6 +231,12 @@ const App = () => {
             
               />
             ))}
+
+            {doingTasks.length === 0 &&(
+              <p className="text-gray-500 text-sm text-center py-4">
+                No matching task.
+              </p>
+            )}
               </div>
           </div>
 
@@ -185,6 +255,11 @@ const App = () => {
                 category={task.category}
                 priority={task.priority}/>
               ))}
+              {doneTasks.length === 0 &&(
+                <p className="text-gray-500 text-sm text-center py-4">
+                  No matching task.
+                </p>
+              )}
               </div>
           </div>
 

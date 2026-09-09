@@ -79,5 +79,14 @@
     "category": "Backend",
     "priority": "Low",
     "status": "Done"
+  },
+  {
+    "id": 10,
+    "title": "A new Task",
+    "description": "This is a new task description.",
+    "assignee": "L.",
+    "category": "Frontend",
+    "priority": "Medium",
+    "status": "Todo"
   }
 ]
