@@ -94,6 +94,29 @@ const TaskBoard = ({ searchTerm, setSearchTerm, filteredTasks}:TaskBoardProps) =
                         </p>
                     )}
                 </div>
+            </div>
+
+            {/* DONE COLUMN */}
+            <div className="bg-[#fec89a] rounded-lg p-4 shadow-md min-h-[200px]">
+                <h2 className="text-xl font-bold text-black mb-3">Done</h2>
+                <div className="space-y-3">
+                    {doneTasks.map((task)=>(
+                        <TaskCard 
+                        key={task.id}
+                        title={task.title}
+                        description={task.description}
+                        assignee={task.assignee}
+                        category={task.category}
+                        priority={task.priority}
+                        />
+                    ))}
+                    {doneTasks.length === 0 && (
+                        <p className="text-gray-500 text-sm text-center py-4">
+                            No matching task.
+                        </p>
+                    )}
+
+                </div>
 
             </div>
 
