@@ -127,3 +127,5 @@ const TaskBoard = ({ searchTerm, setSearchTerm, filteredTasks}:TaskBoardProps) =
         </>
     );
 };
+
+export default TaskBoard;
