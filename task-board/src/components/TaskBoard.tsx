@@ -10,7 +10,7 @@ type TaskBoardProps = {
 
 const TaskBoard = ({ searchTerm, setSearchTerm, filteredTasks}:TaskBoardProps) => {
     const todoTasks = filteredTasks.filter((task)=>task.status === "Todo");
-    const doingTaks = filteredTasks.filter((task)=>task.status === "Doing");
+    const doingTasks = filteredTasks.filter((task)=>task.status === "Doing");
     const doneTasks = filteredTasks.filter((task) =>task.status ==="Done");
 
     return (
@@ -49,6 +49,8 @@ const TaskBoard = ({ searchTerm, setSearchTerm, filteredTasks}:TaskBoardProps) =
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+
             {/* TODO COLUMN */}
             <div className="bg-[#fec89a] rounded-lg p-4 shadow-md min-h-[200px]">
                 <h2 className="text-xl font-bold text-black mb-3">Todo</h2>
@@ -71,8 +73,30 @@ const TaskBoard = ({ searchTerm, setSearchTerm, filteredTasks}:TaskBoardProps) =
 
                 </div>
             </div>
-
             
+            {/* DOING COLUMN */}
+            <div className="bg-[#fec89a] rounded-lg p-4 shadow-md min-h-[200px]">
+                <h2 className="text-xl font-bold text-black mb-3">Doing</h2>
+                <div className="space-y-3">
+                    {doingTasks.map((task)=> (
+                        <TaskCard
+                        key={task.id}
+                        title={task.title}
+                        description={task.description}
+                        assignee={task.assignee}
+                        category={task.category}
+                        priority={task.priority}
+                         />
+                    ))}
+                    {doneTasks.length === 0 && (
+                        <p className="text-gray-500 text-sm text-center py-4">
+                            No matching task.
+                        </p>
+                    )}
+                </div>
+
+            </div>
+
 
         </div>
 
