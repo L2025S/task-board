@@ -1,4 +1,5 @@
 import type { Task } from "../types/Task";
+import TaskCard from "./TaskCard";
 
 type TaskBoardProps = {
     tasks: Task[];
@@ -47,8 +48,32 @@ const TaskBoard = ({ searchTerm, setSearchTerm, filteredTasks}:TaskBoardProps) =
             </div>
         </div>
 
-        <div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* TODO COLUMN */}
+            <div className="bg-[#fec89a] rounded-lg p-4 shadow-md min-h-[200px]">
+                <h2 className="text-xl font-bold text-black mb-3">Todo</h2>
+                <div className="space-y-3">
+                    {todoTasks.map((task) =>(
+                        <TaskCard 
+                        key={task.id}
+                        title={task.title}
+                        description={task.description}
+                        assignee={task.assignee}
+                        category={task.category}
+                        priority={task.priority}
+                         />
+                    ))}
+                    {todoTasks.length ===0 &&(
+                        <p className="text-gray-500 text-sm text-center py-4">
+                            No matching task.
+                        </p>
+                    )}
+
+                </div>
+            </div>
+
             
+
         </div>
 
 
