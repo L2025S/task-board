@@ -6,11 +6,6 @@ type NewTaskFormProps = {
 };
 
 
-
-
-
-
-
 const NewTaskForm = ({onAddTask }: NewTaskFormProps)=>{
 
 
