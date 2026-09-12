@@ -3,8 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 const { Pool } = require("pg");
 
-// const fs = require("fs");
-// const path = require("path");
+
 
 const app = express();
 const PORT = 3001;
@@ -14,94 +13,65 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
-
 // ============ Neon (PostgreSQL) connection pool =================
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl:{rejectUnauthorized: false }, 
+  ssl: { rejectUnauthorized: false },
 });
-
 
 // =========== Test Connection ==================
-pool.connect()
-.then((client) =>{
-  cconsole.log("✅ Connected to Neon PostgreSQL.");
-  client.release();
-})
-.catch((err) => {
-  console.error("❌ Failed to connec to Neon:", err.message);
-});
+pool
+  .connect()
+  .then((client) => {
+    console.log("✅ Connected to Neon PostgreSQL.");
+    client.release();
+  })
+  .catch((err) => {
+    console.error("❌ Failed to connect to Neon:", err.message);
+  });
 
-
-// Data file path
-// const DATA_FILE = path.join(__dirname, "data", "tasks.json");
-
-// ======== Read data ==========
-
-// const readTasks = () => {
-//   try {
-//     const data = fs.readFileSync(DATA_FILE, "utf8");
-//     return JSON.parse(data);
-//   } catch (error) {
-//     console.error("Failed to read file.", error);
-//     return [];
-//   }
-// };
-
-// ======= Write data =======
-
-// const writeTasks = (tasks) => {
-//   try {
-//     fs.writeFileSync(DATA_FILE, JSON.stringify(tasks, null, 2), "utf8");
-//     return true;
-//   } catch (error) {
-//     console.error("Failed to write data to file.", error);
-//     return false;
-//   }
-// };
 
 // =====================================================================
 // API endpoints
 // =====================================================================
 
 // GET  /api/tasks - Get all the task
-app.get("/api/tasks", async(request, response) => {
-  try{
+app.get("/api/tasks", async (request, response) => {
+  try {
     const result = await pool.query(
-      "SELECT id, title, description, assignee, category, priority, status FROM tasks ORDER BY id ASC"
+      "SELECT id, title, description, assignee, category, priority, status FROM tasks ORDER BY id ASC",
     );
     response.json(result.rows);
-  } catch (err){
+  } catch (err) {
     console.error(err);
-    response.status(500).json({error:"Failed to fetch tasks."});
+    response.status(500).json({ error: "Failed to fetch tasks." });
   }
 });
 
 //GET  /api/tasks/:id - Get a single task
 
 app.get("/api/tasks/:id", async (request, response) => {
-  try{
+  try {
     const { id } = request.params;
     const result = await pool.query("SELECT * FROM tasks WHERE id = $1", [id]);
 
-    if(result.rows.length === 0) {
-      return response.status(404).json({error: "Task not found."});
+    if (result.rows.length === 0) {
+      return response.status(404).json({ error: "Task not found." });
     }
     response.json(result.rows[0]);
-
   } catch (err) {
     console.error(err);
-    response.status(500).json({error: "Failed to fetch task."});
+    response.status(500).json({ error: "Failed to fetch task." });
   }
 });
 
 // POST /api/tasks - create new tasks
 
-app.post("/api/tasks", async(request, response) => {
-  
-  try{
-    const {title, description, assignee, category, priority, status } = request.body;
+app.post("/api/tasks", async (request, response) => {
+  try {
+    const { title, description, assignee, category, priority, status } =
+      request.body;
 
     const result = await pool.query(
       `INSERT INTO tasks (title, description, assignee, category, priority, status)
@@ -114,29 +84,29 @@ app.post("/api/tasks", async(request, response) => {
         category,
         priority,
         status || "Todo", // Default value:  Todo
-      ]
+      ],
     );
-    
+
     response.status(201).json(result.rows[0]);
-
-  } catch(err){
+  } catch (err) {
     console.error(err);
-    response.status(500).json({error: "Failed to save task."});
+    response.status(500).json({ error: "Failed to save task." });
   }
-
 });
 
-
 // PUT /api/tasks/:id - Update tasks
-app.put("/api/tasks/:id", async(request, response) => {
-  try{
+app.put("/api/tasks/:id", async (request, response) => {
+  try {
     const { id } = request.params;
-    const {title, description, assignee, category, priority, status } = request.body;
+    const { title, description, assignee, category, priority, status } =
+      request.body;
 
     // Prevent null overwrites
-    const existing = await pool.query ("SELECT * FROM tasks WHERE id = $1", [id]);
-    if(exisiting.rows.length === 0){
-      return response.status(404).json({error: "Task not found."});
+    const existing = await pool.query("SELECT * FROM tasks WHERE id = $1", [
+      id,
+    ]);
+    if (existing.rows.length === 0) {
+      return response.status(404).json({ error: "Task not found." });
     }
 
     const old = existing.rows[0];
@@ -155,34 +125,36 @@ app.put("/api/tasks/:id", async(request, response) => {
         priority ?? old.priority,
         status ?? old.status,
         id,
-      ]
+      ],
     );
-    
-    response.json(result.rows[0]);
 
-  }catch(err){
+    response.json(result.rows[0]);
+  } catch (err) {
     console.error(err);
-    response.status(500).json({error: "Failed to update task."});
+    response.status(500).json({ error: "Failed to update task." });
   }
 });
 
 // DELETE. /api/tasks/:id - Delete task
 app.delete("/api/tasks/:id", async (request, response) => {
- try {
-  const { id } = request.params;
-  const result = await pool.query(
-    "DELETE FROM tasks WHERE id = $1 RETURNING *",
-      [id]
-  );
-  if (result.rows.length === 0) {
-    return response.status(404).json({error: "Task not found."});
-  }
+  try {
+    const { id } = request.params;
+    const result = await pool.query(
+      "DELETE FROM tasks WHERE id = $1 RETURNING *",
+      [id],
+    );
+    if (result.rows.length === 0) {
+      return response.status(404).json({ error: "Task not found." });
+    }
 
-  response.json({ message: " Task deleted successfully.", deleted: result.rows[0] });
- }catch(err){
-  console.error(err);
-  response.status(500).json({error: "Failed to delete task." });
- }
+    response.json({
+      message: " Task deleted successfully.",
+      deleted: result.rows[0],
+    });
+  } catch (err) {
+    console.error(err);
+    response.status(500).json({ error: "Failed to delete task." });
+  }
 });
 
 // Start server
