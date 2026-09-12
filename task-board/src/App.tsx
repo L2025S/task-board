@@ -1,10 +1,10 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import type { Task, NewTask } from "./types/Task";
-import NewTaskForm from "./components/NewTaskForm";
 import { useState, useEffect} from "react";
 import { Route, Routes } from "react-router-dom";
-import TaskBoard from "./components/TaskBoardPage";
+import TaskBoardPage from "./pages/TaskBoardPage";
+import NewTaskPage from "./pages/NewTaskPage";
 
 const API_URL ="http://localhost:3001/api/tasks";
 
@@ -150,7 +150,7 @@ const App = () => {
         <Route 
         path="/"
         element={
-          <TaskBoard
+          <TaskBoardPage
           tasks={tasks}
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -164,7 +164,7 @@ const App = () => {
         path="/new"
         element={
           <div className="max-w-2xl mx-auto">
-            <NewTaskForm  onAddTask={handleAddTask}/>
+            <NewTaskPage  onAddTask={handleAddTask}/>
           </div>
         }
          />
