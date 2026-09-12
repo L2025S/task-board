@@ -4,7 +4,7 @@ import type { Task, NewTask } from "./types/Task";
 import NewTaskForm from "./components/NewTaskForm";
 import { useState, useEffect} from "react";
 import { Route, Routes } from "react-router-dom";
-import TaskBoard from "./components/TaskBoard";
+import TaskBoard from "./components/TaskBoardPage";
 
 const API_URL ="http://localhost:3001/api/tasks";
 
